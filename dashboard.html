@@ -383,6 +383,20 @@ footer {
 #exportBtn:hover {
     background: #168bd0;
 }
+/* CLEAR SECURITY LOGS BUTTON */
+#clearBtn {
+    background: #8b202d;
+    border: 1px solid #c83c4c;
+    color: white;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+#clearBtn:hover {
+    background: #b52b3b;
+    border-color: #ff5968;
+}
+    
 </style>
 </head>
 
@@ -552,6 +566,9 @@ footer {
     ↓ Export Security Logs
 </button>
 
+<button id="clearBtn">
+    🗑 Clear Security Logs
+</button>        
         <p id="eventMessage" aria-live="polite">
             Ready to simulate a demo event.
         </p>
@@ -667,6 +684,7 @@ const rows = document.querySelector("#logRows");
     const searchInput = document.querySelector("#logSearch");
 const simulateBtn = document.querySelector("#simulateBtn");
     const exportBtn = document.querySelector("#exportBtn");
+    const clearBtn = document.querySelector("#clearBtn");
 const recentAlerts = document.querySelector("#alerts");
 
 let totalEvents = 1284;
@@ -1001,6 +1019,25 @@ exportBtn.addEventListener("click", () => {
     document.body.removeChild(downloadLink);
 
     URL.revokeObjectURL(url);
+
+});
+    // CLEAR SECURITY LOGS
+clearBtn.addEventListener("click", () => {
+
+    const confirmClear = confirm(
+        "Are you sure you want to clear all security logs?"
+    );
+
+    if (confirmClear) {
+
+        rows.innerHTML = "";
+
+        recentAlerts.innerHTML = "";
+
+        document.querySelector("#eventMessage").textContent =
+            "All demo security logs have been cleared.";
+
+    }
 
 });
 </script>
