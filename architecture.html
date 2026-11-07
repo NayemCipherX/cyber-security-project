@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Architecture | CyberShield AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: #e8f1ff;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #0d1b2e;
+            padding: 18px 7%;
+            border-bottom: 1px solid #203750;
+        }
+
+        nav a {
+            color: #52caff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        h1, h2, h3 {
+            color: #52caff;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .intro {
+            color: #b9c9dc;
+            margin-bottom: 30px;
+        }
+
+        .panel {
+            background: #102239;
+            border: 1px solid #203c59;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 22px;
+        }
+
+        .panel p {
+            color: #c7d5e6;
+        }
+
+        .architecture-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .flow-box {
+            background: #102d49;
+            border: 1px solid #52caff;
+            border-radius: 10px;
+            padding: 17px;
+            width: 90%;
+            max-width: 520px;
+            text-align: center;
+        }
+
+        .flow-box strong {
+            color: #52caff;
+        }
+
+        .arrow {
+            color: #52caff;
+            font-size: 25px;
+        }
+
+        .note {
+            color: #f4ca78;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #8195ad;
+            border-top: 1px solid #203750;
+            margin-top: 50px;
+        }
+
+        @media(max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">← Back to Home</a>
+</nav>
+
+<div class="container">
+
+    <h1>System Architecture</h1>
+
+    <p class="intro">
+        A technical representation of how the proposed
+        CyberShield AI components communicate, process
+        security events and generate responses.
+    </p>
+
+    <div class="panel">
+        <h2>1. Architecture Overview</h2>
+        <p>
+            The proposed architecture follows a layered design.
+            Each layer has a specific responsibility, allowing
+            the system to separate data collection, intelligent
+            analysis, cloud resource management and security
+            notification.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>2. Proposed System Architecture Diagram</h2>
+
+        <div class="architecture-flow">
+
+            <div class="flow-box">
+                <strong>Data Sources</strong>
+                <p>Network Events / Security Logs / Test Datasets</p>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-box">
+                <strong>Data Processing Layer</strong>
+                <p>Python Data Collection and Preprocessing</p>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-box">
+                <strong>AI / ML Detection Engine</strong>
+                <p>Feature Analysis and Threat Classification</p>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-box">
+                <strong>Security Decision Layer</strong>
+                <p>Event Classification and Response Rules</p>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-box">
+                <strong>AWS Cloud Services</strong>
+                <p>S3 / RDS / IAM / EC2</p>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-box">
+                <strong>AWS SNS Notification</strong>
+                <p>Security Alert Delivery</p>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="flow-box">
+                <strong>Security Dashboard</strong>
+                <p>Event Records / Threat Reports / Monitoring</p>
+            </div>
+
+        </div>
+
+        <p class="note">
+            Note: This diagram represents the proposed architecture.
+            The complete backend and AWS integration are not yet deployed.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>3. Data Collection Layer</h2>
+        <p>
+            This layer receives security-related information
+            from selected datasets, test environments or
+            configured event sources. The collected information
+            becomes the input for subsequent analysis.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>4. Intelligence and Decision Layer</h2>
+        <p>
+            The detection engine examines prepared data and
+            produces a classification result. A decision
+            component then evaluates the result against
+            predefined security rules to determine whether
+            an alert or controlled response is required.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>5. Cloud Storage and Access Layer</h2>
+        <p>
+            Security records and relevant project data can
+            be maintained through the proposed cloud storage
+            architecture. Access to cloud resources will be
+            restricted using appropriate IAM policies and
+            least-privilege permissions.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>6. Alert and Monitoring Layer</h2>
+        <p>
+            When a configured security condition is detected,
+            the notification component can publish an event
+            through AWS SNS. The dashboard is designed to
+            present recorded events and provide an interface
+            for reviewing security activity.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>7. Security Considerations</h2>
+        <p>
+            The architecture will follow secure communication,
+            restricted access, input validation, protected
+            credentials, audit logging and controlled response
+            policies. Sensitive actions should require
+            appropriate authorization.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    CyberShield AI | System Architecture
+</footer>
+
+</body>
+</html>
