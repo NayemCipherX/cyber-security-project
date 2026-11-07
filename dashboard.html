@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Dashboard | CyberShield AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#070b16;color:#e8efff;font-family:Arial,sans-serif}
+a{text-decoration:none;color:inherit}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:235px;background:#0b1424;border-right:1px solid #1c304b;padding:28px 18px}
+.logo{font-size:21px;color:#48caff;font-weight:bold;margin-bottom:38px}
+.menu a{display:block;padding:13px;margin:7px 0;color:#9eb0ca;border-radius:7px}
+.menu a:hover,.menu .active{background:#122b47;color:#50caff}
+.main{flex:1;padding:30px;min-width:0}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:30px}
+.topbar h1{font-size:27px}
+.muted{color:#8fa2bf;font-size:13px}
+.badge{color:#4cdda2;border:1px solid #246b57;padding:7px 12px;border-radius:20px;font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.panel,.stat{background:#0d1729;border:1px solid #1d3452;border-radius:11px;padding:20px}
+.stat p{color:#91a5c2;font-size:13px}
+.stat h2{font-size:30px;margin-top:12px;color:#4bcaff}
+.stat:nth-child(2) h2{color:#ffb65e}
+.stat:nth-child(3) h2{color:#ff7777}
+.stat:nth-child(4) h2{color:#4bd9a1}
+.section{margin-top:23px}
+.section-title{font-size:18px;margin-bottom:17px}
+.content-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}
+.chart{height:180px;display:flex;align-items:end;justify-content:space-around;gap:12px;padding:15px 5px 0;border-bottom:1px solid #29405c}
+.bar-group{height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:8px;flex:1}
+.bar{width:65%;max-width:42px;background:linear-gradient(#48caff,#1264a4);border-radius:5px 5px 0 0}
+.bar-group small{color:#8fa2bf;font-size:11px}
+.legend{display:flex;gap:16px;margin-top:16px;color:#9eb0ca;font-size:12px}
+.dot{display:inline-block;width:8px;height:8px;background:#48caff;border-radius:50%;margin-right:5px}
+.activity{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid #20334d;font-size:13px}
+.activity:last-child{border:0}
+.severity{font-size:11px;padding:5px 8px;border-radius:5px;white-space:nowrap}
+.high{background:#482b24;color:#ffae83}
+.medium{background:#44391f;color:#ffd36e}
+.critical{background:#48232c;color:#ff8997}
+.low{background:#163b35;color:#72dfb6}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:550px;font-size:13px}
+th,td{text-align:left;padding:15px 12px;border-bottom:1px solid #20334d}
+th{color:#8fa2bf;font-weight:normal}
+td{color:#d6e2f5}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+button{background:#13243b;border:1px solid #294565;color:#c8d9ef;padding:8px 13px;border-radius:6px;cursor:pointer}
+button:hover,button.selected{background:#12649b;color:white}
+footer{margin-top:30px;color:#7185a1;font-size:12px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.content-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.layout{display:block}.sidebar{width:100%;padding:15px}.logo{margin-bottom:10px}.menu{display:flex;flex-wrap:wrap}.menu a{padding:9px}.main{padding:18px}.topbar h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<aside class="sidebar">
+<div class="logo">⌁ CyberShield AI</div>
+<nav class="menu">
+<a href="index.html">⌂ Home</a>
+<a href="#overview" class="active">▦ Dashboard</a>
+<a href="#analytics">◈ Analytics</a>
+<a href="#alerts">⚠ Alerts</a>
+<a href="#logs">▤ Security Logs</a>
+</nav>
+</aside>
+
+<main class="main">
+<div class="topbar">
+<div>
+<p class="muted">SECURITY OPERATIONS CENTER</p>
+<h1>Security Dashboard</h1>
+<p class="muted">AI-Based Cyber Attack Detection and Prevention</p>
+</div>
+<span class="badge">● DEMO MODE</span>
+</div>
+
+<section id="overview" class="stats">
+<div class="stat"><p>Total Security Events</p><h2>1,284</h2></div>
+<div class="stat"><p>Threats Detected</p><h2>24</h2></div>
+<div class="stat"><p>Critical Alerts</p><h2>03</h2></div>
+<div class="stat"><p>System Status</p><h2>Online</h2></div>
+</section>
+
+<section class="section content-grid" id="analytics">
+<div class="panel">
+<h3 class="section-title">Security Event Analytics</h3>
+<p class="muted">Illustrative weekly event distribution</p>
+<div class="chart">
+<div class="bar-group"><div class="bar" style="height:35%"></div><small>Mon</small></div>
+<div class="bar-group"><div class="bar" style="height:65%"></div><small>Tue</small></div>
+<div class="bar-group"><div class="bar" style="height:48%"></div><small>Wed</small></div>
+<div class="bar-group"><div class="bar" style="height:85%"></div><small>Thu</small></div>
+<div class="bar-group"><div class="bar" style="height:55%"></div><small>Fri</small></div>
+<div class="bar-group"><div class="bar" style="height:72%"></div><small>Sat</small></div>
+<div class="bar-group"><div class="bar" style="height:42%"></div><small>Sun</small></div>
+</div>
+<div class="legend"><span><i class="dot"></i>Security events</span></div>
+</div>
+
+<div class="panel" id="alerts">
+<h3 class="section-title">Recent Alerts</h3>
+<div class="activity"><span>Suspicious login</span><span class="severity high">HIGH</span></div>
+<div class="activity"><span>Unusual traffic</span><span class="severity medium">MEDIUM</span></div>
+<div class="activity"><span>Access violation</span><span class="severity critical">CRITICAL</span></div>
+<div class="activity"><span>Failed login attempt</span><span class="severity low">LOW</span></div>
+</div>
+</section>
+
+<section class="section panel" id="logs">
+<h3 class="section-title">Security Event Logs</h3>
+<div class="filters">
+<button class="selected" data-filter="All">All Events</button>
+<button data-filter="Critical">Critical</button>
+<button data-filter="High">High</button>
+<button data-filter="Medium">Medium</button>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Event ID</th><th>Event Description</th><th>Severity</th><th>Status</th></tr></thead>
+<tbody id="logRows">
+<tr data-severity="Critical"><td>EVT-001</td><td>Unauthorized access attempt</td><td><span class="severity critical">Critical</span></td><td>Detected</td></tr>
+<tr data-severity="High"><td>EVT-002</td><td>Suspicious login activity</td><td><span class="severity high">High</span></td><td>Detected</td></tr>
+<tr data-severity="Medium"><td>EVT-003</td><td>Unusual network traffic</td><td><span class="severity medium">Medium</span></td><td>Reviewing</td></tr>
+<tr data-severity="High"><td>EVT-004</td><td>Multiple failed login attempts</td><td><span class="severity high">High</span></td><td>Detected</td></tr>
+<tr data-severity="Medium"><td>EVT-005</td><td>Unusual access pattern</td><td><span class="severity medium">Medium</span></td><td>Reviewing</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<footer>
+CyberShield AI | Academic Research Project | Dashboard demonstration with sample data
+</footer>
+</main>
+</div>
+
+<script>
+const buttons=document.querySelectorAll("[data-filter]");
+const rows=document.querySelectorAll("#logRows tr");
+
+buttons.forEach(button=>{
+  button.addEventListener("click",()=>{
+    buttons.forEach(b=>b.classList.remove("selected"));
+    button.classList.add("selected");
+
+    const filter=button.dataset.filter;
+    rows.forEach(row=>{
+      row.style.display=
+        filter==="All" || row.dataset.severity===filter
+        ? "" : "none";
+    });
+  });
+});
+</script>
+</body>
+</html>
