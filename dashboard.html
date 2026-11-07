@@ -346,6 +346,31 @@ footer {
         font-size: 22px;
     }
 }
+    
+/* SECURITY LOG SEARCH */
+.search-box {
+    margin-top: 18px;
+}
+
+#logSearch {
+    width: 100%;
+    padding: 12px 14px;
+    background: #091426;
+    border: 1px solid #294565;
+    border-radius: 7px;
+    color: #e8efff;
+    font-size: 14px;
+    outline: none;
+}
+
+#logSearch:focus {
+    border-color: #48caff;
+}
+
+#logSearch::placeholder {
+    color: #7185a1;
+}
+
 </style>
 </head>
 
@@ -516,6 +541,17 @@ footer {
             Ready to simulate a demo event.
         </p>
 
+        
+<!-- SECURITY LOG SEARCH -->
+<div class="search-box">
+    <input
+        type="text"
+        id="logSearch"
+        placeholder="Search by Event ID or Description..."
+    >
+</div>
+
+
         <!-- FILTER BUTTONS -->
         <div class="filters">
 
@@ -613,6 +649,7 @@ footer {
 
 const buttons = document.querySelectorAll("[data-filter]");
 const rows = document.querySelector("#logRows");
+    const searchInput = document.querySelector("#logSearch");
 const simulateBtn = document.querySelector("#simulateBtn");
 const recentAlerts = document.querySelector("#alerts");
 
@@ -666,21 +703,30 @@ buttons.forEach(button => {
 });
 
 
-// APPLY CURRENT FILTER
+// APPLY SEARCH AND SEVERITY FILTER
 function applyFilter() {
+
+    const searchText = searchInput.value.toLowerCase();
 
     rows.querySelectorAll("tr").forEach(row => {
 
-        const matches =
+        const matchesSeverity =
             activeFilter === "All" ||
             row.dataset.severity === activeFilter;
 
-        row.style.display = matches ? "" : "none";
+        const matchesSearch =
+            row.textContent.toLowerCase().includes(searchText);
+
+        row.style.display =
+            matchesSeverity && matchesSearch ? "" : "none";
 
     });
 
 }
-
+    // SEARCH EVENTS
+searchInput.addEventListener("input", () => {
+    applyFilter();
+});
 
 // SIMULATE SECURITY EVENT
 simulateBtn.addEventListener("click", () => {
