@@ -801,6 +801,68 @@ simulateBtn.addEventListener("click", () => {
     applyFilter();
 
 
+   
+// BROWSER NOTIFICATION
+if ("Notification" in window) {
+
+    if (Notification.permission === "granted") {
+
+        new Notification("CyberShield AI - Security Alert", {
+            body: event.name + " | Severity: " + event.severity,
+            icon: "https://cdn-icons-png.flaticon.com/512/564/564619.png"
+        });
+
+    } else if (Notification.permission === "default") {
+
+        Notification.requestPermission().then(permission => {
+
+            if (permission === "granted") {
+
+                new Notification("CyberShield AI - Security Alert", {
+                    body: event.name + " | Severity: " + event.severity
+                });
+
+            }
+
+        });
+
+    }
+
+}
+
+
+// ALERT SOUND
+try {
+
+    const audioContext = new (
+        window.AudioContext || window.webkitAudioContext
+    )();
+
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.frequency.value = 850;
+    oscillator.type = "sine";
+
+    gain.gain.setValueAtTime(0.15, audioContext.currentTime);
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioContext.currentTime + 0.4
+    );
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.4);
+
+} catch (error) {
+
+    console.log("Audio notification unavailable.");
+
+}
+
     // UPDATE MESSAGE
     document.querySelector("#eventMessage").textContent =
         "Demo event generated: " + event.name;
