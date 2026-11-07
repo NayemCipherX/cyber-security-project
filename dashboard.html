@@ -623,6 +623,30 @@ let eventNumber = 6;
 
 let activeFilter = "All";
 
+// WEEKLY ANALYTICS DATA
+const weeklyCounts = [35, 65, 48, 85, 55, 72, 42];
+
+const chartBars = document.querySelectorAll(".chart .bar");
+
+function updateAnalyticsChart() {
+
+    const randomDay = Math.floor(Math.random() * 7);
+
+    weeklyCounts[randomDay] += 5;
+
+    const maxCount = Math.max(...weeklyCounts);
+
+    chartBars.forEach((bar, index) => {
+
+        const newHeight =
+            (weeklyCounts[index] / maxCount) * 100;
+
+        bar.style.height = newHeight + "%";
+
+    });
+
+}
+
 
 // FILTER EVENTS
 buttons.forEach(button => {
@@ -697,13 +721,15 @@ simulateBtn.addEventListener("click", () => {
 
 
     // UPDATE COUNTERS
-    totalEvents++;
-    threats++;
+totalEvents++;
+threats++;
 
-    if (event.severity === "Critical") {
-        critical++;
-    }
+if (event.severity === "Critical") {
+    critical++;
+}
 
+// UPDATE ANALYTICS CHART
+updateAnalyticsChart();
 
     // UPDATE DASHBOARD STATISTICS
     document.querySelector("#totalEvents").textContent =
