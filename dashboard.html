@@ -194,6 +194,7 @@ a {
 .activity {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 12px;
     padding: 13px 0;
     border-bottom: 1px solid #20334d;
@@ -515,7 +516,6 @@ footer {
             Ready to simulate a demo event.
         </p>
 
-
         <!-- FILTER BUTTONS -->
         <div class="filters">
 
@@ -614,6 +614,7 @@ footer {
 const buttons = document.querySelectorAll("[data-filter]");
 const rows = document.querySelector("#logRows");
 const simulateBtn = document.querySelector("#simulateBtn");
+const recentAlerts = document.querySelector("#alerts");
 
 let totalEvents = 1284;
 let threats = 24;
@@ -689,13 +690,13 @@ simulateBtn.addEventListener("click", () => {
     ];
 
 
-    // Select a random demo event
+    // SELECT RANDOM DEMO EVENT
     const event = events[
         Math.floor(Math.random() * events.length)
     ];
 
 
-    // Update counters
+    // UPDATE COUNTERS
     totalEvents++;
     threats++;
 
@@ -704,7 +705,7 @@ simulateBtn.addEventListener("click", () => {
     }
 
 
-    // Update dashboard statistics
+    // UPDATE DASHBOARD STATISTICS
     document.querySelector("#totalEvents").textContent =
         totalEvents.toLocaleString();
 
@@ -715,38 +716,92 @@ simulateBtn.addEventListener("click", () => {
         String(critical).padStart(2, "0");
 
 
-    // Create new table row
-    const row = document.createElement("tr");
-
-    row.dataset.severity = event.severity;
-
+    // CREATE EVENT ID
     const id = "EVT-" +
         String(eventNumber++).padStart(3, "0");
 
     const severityClass = event.severity.toLowerCase();
 
 
-    row.innerHTML = `
-        <td>${id}</td>
-        <td>${event.name}</td>
-        <td>
-            <span class="severity ${severityClass}">
-                ${event.severity}
-            </span>
-        </td>
-        <td>${event.status}</td>
-    `;
+    // CREATE NEW TABLE ROW
+    const row = document.createElement("tr");
 
+    row.dataset.severity = event.severity;
 
-    // Add new event to the top of the table
+    const idCell = document.createElement("td");
+    idCell.textContent = id;
+
+    const nameCell = document.createElement("td");
+    nameCell.textContent = event.name;
+
+    const severityCell = document.createElement("td");
+    const severityLabel = document.createElement("span");
+
+    severityLabel.className = "severity " + severityClass;
+    severityLabel.textContent = event.severity;
+
+    severityCell.appendChild(severityLabel);
+
+    const statusCell = document.createElement("td");
+    statusCell.textContent = event.status;
+
+    row.append(
+        idCell,
+        nameCell,
+        severityCell,
+        statusCell
+    );
+
+    // ADD EVENT TO LOG TABLE
     rows.prepend(row);
 
 
-    // Keep the selected filter active
+    // CREATE NEW RECENT ALERT
+    const alertItem = document.createElement("div");
+
+    alertItem.className = "activity";
+
+    const alertName = document.createElement("span");
+    alertName.textContent = event.name;
+
+    const alertSeverity = document.createElement("span");
+
+    alertSeverity.className =
+        "severity " + severityClass;
+
+    alertSeverity.textContent =
+        event.severity.toUpperCase();
+
+    alertItem.append(
+        alertName,
+        alertSeverity
+    );
+
+
+    // ADD ALERT AT THE TOP OF RECENT ALERTS
+    const firstAlert =
+        recentAlerts.querySelector(".activity");
+
+    recentAlerts.insertBefore(
+        alertItem,
+        firstAlert
+    );
+
+
+    // KEEP ONLY THE LATEST 5 ALERTS
+    const allAlerts =
+        recentAlerts.querySelectorAll(".activity");
+
+    if (allAlerts.length > 5) {
+        allAlerts[allAlerts.length - 1].remove();
+    }
+
+
+    // APPLY ACTIVE FILTER
     applyFilter();
 
 
-    // Show confirmation message
+    // UPDATE MESSAGE
     document.querySelector("#eventMessage").textContent =
         "Demo event generated: " + event.name;
 
