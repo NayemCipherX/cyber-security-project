@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Methodology | CyberShield AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: #e8f1ff;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #0d1b2e;
+            padding: 18px 7%;
+            border-bottom: 1px solid #203750;
+        }
+
+        nav a {
+            color: #52caff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        h1, h2, h3 {
+            color: #52caff;
+            margin-bottom: 13px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .intro {
+            color: #b9c9dc;
+            margin-bottom: 30px;
+        }
+
+        .panel {
+            background: #102239;
+            border: 1px solid #203c59;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 22px;
+        }
+
+        .panel p, .panel li {
+            color: #c7d5e6;
+        }
+
+        .panel ul {
+            padding-left: 22px;
+            margin-top: 12px;
+        }
+
+        .method-step {
+            border-left: 3px solid #52caff;
+            padding: 5px 0 5px 18px;
+            margin: 20px 0;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .metric {
+            background: #0d1b2e;
+            border: 1px solid #294765;
+            padding: 18px;
+            border-radius: 10px;
+        }
+
+        .metric h3 {
+            font-size: 19px;
+        }
+
+        .formula {
+            background: #071827;
+            padding: 12px;
+            border-radius: 7px;
+            color: #8edcff;
+            margin-top: 10px;
+            overflow-wrap: anywhere;
+        }
+
+        .note {
+            color: #f4ca78;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #8195ad;
+            border-top: 1px solid #203750;
+            margin-top: 50px;
+        }
+
+        @media(max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">← Back to Home</a>
+</nav>
+
+<div class="container">
+
+    <h1>Research Methodology</h1>
+
+    <p class="intro">
+        A systematic experimental approach for developing,
+        implementing and evaluating the proposed CyberShield AI
+        cybersecurity framework.
+    </p>
+
+    <div class="panel">
+        <h2>1. Research Design</h2>
+        <p>
+            This research follows an experimental and
+            prototype-based development approach. A selected
+            cybersecurity dataset will be used to train and
+            evaluate a machine learning model. The resulting
+            detection output will then be used to investigate
+            cloud-based event management and security
+            notification mechanisms.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>2. Dataset Selection</h2>
+        <p>
+            The experiment will use a publicly available
+            cybersecurity dataset containing examples of
+            normal and malicious activity.
+        </p>
+
+        <ul>
+            <li><strong>CICIDS2017:</strong> Network traffic data containing benign activity and multiple attack categories.</li>
+            <li><strong>UNSW-NB15:</strong> Network traffic dataset designed for intrusion detection research.</li>
+            <li><strong>NSL-KDD:</strong> An established dataset used in network intrusion detection experiments.</li>
+        </ul>
+
+        <p class="note">
+            The final experiment will select a suitable dataset
+            based on availability, relevance, licensing and
+            research objectives. These datasets are alternatives,
+            not a claim that all three have already been tested.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>3. Data Preparation</h2>
+        <p>
+            Before model training, the selected dataset will
+            undergo preparation to improve consistency and
+            suitability for analysis.
+        </p>
+
+        <ul>
+            <li>Remove duplicate or irrelevant records where appropriate.</li>
+            <li>Handle missing and inconsistent values.</li>
+            <li>Convert categorical fields into numerical representations.</li>
+            <li>Normalize or scale numerical features when required by the algorithm.</li>
+            <li>Separate input features from target labels.</li>
+        </ul>
+    </div>
+
+    <div class="panel">
+        <h2>4. Algorithm Selection</h2>
+        <p>
+            Suitable classification algorithms will be
+            considered for identifying patterns in the
+            prepared dataset.
+        </p>
+
+        <div class="method-step">
+            <h3>Random Forest</h3>
+            <p>
+                An ensemble learning method that combines
+                multiple decision trees to produce a
+                classification result.
+            </p>
+        </div>
+
+        <div class="method-step">
+            <h3>Decision Tree</h3>
+            <p>
+                A tree-based algorithm that makes
+                predictions through a sequence of
+                feature-based decisions.
+            </p>
+        </div>
+
+        <div class="method-step">
+            <h3>Support Vector Machine</h3>
+            <p>
+                A supervised learning algorithm that
+                identifies decision boundaries between
+                different data classes.
+            </p>
+        </div>
+
+        <p class="note">
+            The final model will be selected after considering
+            experimental performance, dataset characteristics
+            and computational requirements.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>5. Model Training and Validation</h2>
+        <p>
+            The prepared dataset will be divided into
+            training and testing subsets. The training
+            subset will be used to fit the model, while
+            the testing subset will evaluate its performance
+            on previously unseen records.
+        </p>
+
+        <ul>
+            <li>Use a reproducible train-test split.</li>
+            <li>Apply stratified sampling where appropriate.</li>
+            <li>Use cross-validation when suitable.</li>
+            <li>Monitor overfitting and class imbalance.</li>
+            <li>Record model settings and experimental results.</li>
+        </ul>
+    </div>
+
+    <div class="panel">
+        <h2>6. Performance Evaluation</h2>
+        <p>
+            Model performance will be evaluated using
+            established classification metrics.
+        </p>
+
+        <div class="metric-grid">
+
+            <div class="metric">
+                <h3>Accuracy</h3>
+                <p>
+                    Measures the proportion of correctly
+                    classified records.
+                </p>
+                <div class="formula">
+                    (TP + TN) / (TP + TN + FP + FN)
+                </div>
+            </div>
+
+            <div class="metric">
+                <h3>Precision</h3>
+                <p>
+                    Measures how many predicted positive
+                    records are actually positive.
+                </p>
+                <div class="formula">
+                    TP / (TP + FP)
+                </div>
+            </div>
+
+            <div class="metric">
+                <h3>Recall</h3>
+                <p>
+                    Measures how many actual positive
+                    records are correctly identified.
+                </p>
+                <div class="formula">
+                    TP / (TP + FN)
+                </div>
+            </div>
+
+            <div class="metric">
+                <h3>F1-Score</h3>
+                <p>
+                    Combines precision and recall using
+                    their harmonic mean.
+                </p>
+                <div class="formula">
+                    2 × (Precision × Recall) / (Precision + Recall)
+                </div>
+            </div>
+
+        </div>
+
+        <p class="note">
+            TP = True Positive, TN = True Negative,
+            FP = False Positive, FN = False Negative.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>7. Experimental Environment</h2>
+        <p>
+            The proposed experiment will use a Python-based
+            development environment for dataset preparation,
+            model training and result analysis. AWS services
+            will be configured separately for the cloud
+            integration prototype.
+        </p>
+
+        <ul>
+            <li>Python and suitable machine learning libraries.</li>
+            <li>Jupyter Notebook or an equivalent development environment.</li>
+            <li>A selected intrusion detection dataset.</li>
+            <li>AWS test environment with controlled permissions.</li>
+            <li>Sample security events for notification testing.</li>
+        </ul>
+    </div>
+
+    <div class="panel">
+        <h2>8. Integration Testing</h2>
+        <p>
+            After individual components are developed,
+            controlled tests will examine whether detection
+            results can be passed to the event management
+            component and whether configured events can
+            trigger the intended notification workflow.
+        </p>
+
+        <ul>
+            <li>Test normal and suspicious sample records.</li>
+            <li>Verify event classification output.</li>
+            <li>Check cloud access permissions.</li>
+            <li>Test notification delivery using AWS SNS.</li>
+            <li>Verify event records and response logs.</li>
+        </ul>
+    </div>
+
+    <div class="panel">
+        <h2>9. Result Analysis</h2>
+        <p>
+            Experimental results will be documented using
+            tables, classification reports and confusion
+            matrices. The analysis will examine model
+            performance, false alarms, missed detections
+            and integration test outcomes.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>10. Reproducibility and Ethical Considerations</h2>
+        <p>
+            Experiments will use authorized datasets and
+            controlled test environments. Dataset sources,
+            preprocessing steps, model parameters and
+            evaluation procedures will be documented
+            to support reproducibility.
+        </p>
+        <p>
+            Testing will not involve unauthorized access
+            to third-party systems. Cloud credentials and
+            sensitive configuration information will
+            be protected.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    CyberShield AI | Research Methodology
+</footer>
+
+</body>
+</html>
