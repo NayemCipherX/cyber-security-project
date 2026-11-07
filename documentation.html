@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Documentation | CyberShield AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: #e8f1ff;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #0d1b2e;
+            padding: 18px 7%;
+            border-bottom: 1px solid #203750;
+        }
+
+        nav a {
+            color: #52caff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        h1, h2, h3 {
+            color: #52caff;
+            margin-bottom: 13px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .intro {
+            color: #b9c9dc;
+            margin-bottom: 30px;
+        }
+
+        .panel {
+            background: #102239;
+            border: 1px solid #203c59;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 22px;
+        }
+
+        .panel p, .panel li {
+            color: #c7d5e6;
+        }
+
+        .panel ul {
+            padding-left: 22px;
+            margin-top: 12px;
+        }
+
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .doc-table th, .doc-table td {
+            border: 1px solid #294765;
+            padding: 12px;
+            text-align: left;
+            color: #c7d5e6;
+            vertical-align: top;
+        }
+
+        .doc-table th {
+            background: #173c59;
+            color: #52caff;
+        }
+
+        .doc-table td {
+            background: #0d1b2e;
+        }
+
+        .code-example {
+            background: #061522;
+            border: 1px solid #294765;
+            border-radius: 8px;
+            padding: 16px;
+            color: #8edcff;
+            overflow-x: auto;
+            margin-top: 12px;
+            font-family: monospace;
+            white-space: pre;
+        }
+
+        .note {
+            color: #f4ca78;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #8195ad;
+            border-top: 1px solid #203750;
+            margin-top: 50px;
+        }
+
+        @media(max-width: 650px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .doc-table {
+                font-size: 12px;
+            }
+
+            .doc-table th, .doc-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">← Back to Home</a>
+</nav>
+
+<div class="container">
+
+    <h1>System Documentation</h1>
+
+    <p class="intro">
+        Technical specifications, software requirements,
+        database planning and interface documentation
+        for the CyberShield AI project.
+    </p>
+
+    <div class="panel">
+        <h2>1. System Specification</h2>
+        <p>
+            CyberShield AI is designed as a web-based
+            cybersecurity research prototype. The proposed
+            application will use a browser-based interface,
+            a server-side application layer, a machine
+            learning component and a cloud service layer.
+        </p>
+
+        <table class="doc-table">
+            <tr>
+                <th>Specification</th>
+                <th>Proposed Selection</th>
+            </tr>
+            <tr>
+                <td>Application Type</td>
+                <td>Web-Based Security Monitoring Prototype</td>
+            </tr>
+            <tr>
+                <td>Frontend</td>
+                <td>HTML, CSS and JavaScript</td>
+            </tr>
+            <tr>
+                <td>Backend</td>
+                <td>PHP</td>
+            </tr>
+            <tr>
+                <td>AI Component</td>
+                <td>Python and Machine Learning</td>
+            </tr>
+            <tr>
+                <td>Database</td>
+                <td>MySQL / AWS RDS</td>
+            </tr>
+            <tr>
+                <td>Cloud Platform</td>
+                <td>Amazon Web Services</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="panel">
+        <h2>2. Functional Requirements</h2>
+        <p>
+            Functional requirements describe the operations
+            that the proposed application should support.
+        </p>
+
+        <ul>
+            <li><strong>FR-01:</strong> The system should provide secure user authentication.</li>
+            <li><strong>FR-02:</strong> Authorized users should be able to access the monitoring dashboard.</li>
+            <li><strong>FR-03:</strong> The system should accept and process supported security event records.</li>
+            <li><strong>FR-04:</strong> The machine learning component should produce threat classification results.</li>
+            <li><strong>FR-05:</strong> The application should maintain security event records.</li>
+            <li><strong>FR-06:</strong> Configured threat conditions should be able to trigger AWS SNS notifications.</li>
+            <li><strong>FR-07:</strong> Administrators should be able to review authorized security records.</li>
+            <li><strong>FR-08:</strong> The application should support security reports and event investigation.</li>
+        </ul>
+    </div>
+
+    <div class="panel">
+        <h2>3. Non-Functional Requirements</h2>
+        <p>
+            These requirements describe the quality,
+            reliability and security expectations
+            of the proposed system.
+        </p>
+
+        <ul>
+            <li><strong>Security:</strong> Protect user accounts, credentials and application data.</li>
+            <li><strong>Performance:</strong> Process supported events within reasonable response times.</li>
+            <li><strong>Reliability:</strong> Handle errors without silently losing important event records.</li>
+            <li><strong>Scalability:</strong> Allow the architecture to accommodate increased event volume.</li>
+            <li><strong>Usability:</strong> Provide a clear and understandable dashboard interface.</li>
+            <li><strong>Maintainability:</strong> Keep application components organized and documented.</li>
+            <li><strong>Availability:</strong> Design cloud components for dependable access and operation.</li>
+        </ul>
+    </div>
+
+    <div class="panel">
+        <h2>4. User Roles and Permissions</h2>
+
+        <table class="doc-table">
+            <tr>
+                <th>User Role</th>
+                <th>Responsibilities</th>
+            </tr>
+            <tr>
+                <td>Administrator</td>
+                <td>Manage authorized accounts, review system records and configure security settings.</td>
+            </tr>
+            <tr>
+                <td>Security Analyst</td>
+                <td>Review alerts, investigate suspicious events and examine reports.</td>
+            </tr>
+            <tr>
+                <td>Standard User</td>
+                <td>Access permitted dashboard information and view authorized reports.</td>
+            </tr>
+        </table>
+
+        <p class="note">
+            These are proposed application roles.
+            Actual permissions will be implemented
+            using role-based access control.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>5. Database Design</h2>
+        <p>
+            The proposed relational database will maintain
+            application users, security events, model
+            predictions, notification records and
+            administrative activity.
+        </p>
+
+        <table class="doc-table">
+            <tr>
+                <th>Table</th>
+                <th>Important Fields</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>users</td>
+                <td>user_id, username, email, password_hash, role</td>
+                <td>User accounts and access roles</td>
+            </tr>
+            <tr>
+                <td>security_events</td>
+                <td>event_id, event_type, source, timestamp, status</td>
+                <td>Collected security records</td>
+            </tr>
+            <tr>
+                <td>threat_predictions</td>
+                <td>prediction_id, event_id, predicted_class, confidence</td>
+                <td>Machine learning output</td>
+            </tr>
+            <tr>
+                <td>alerts</td>
+                <td>alert_id, event_id, severity, notification_status</td>
+                <td>Security notification records</td>
+            </tr>
+            <tr>
+                <td>audit_logs</td>
+                <td>log_id, user_id, action, created_at</td>
+                <td>Administrative activity history</td>
+            </tr>
+        </table>
+
+        <p class="note">
+            This is a proposed logical schema. Data types,
+            constraints, indexes and relationships will
+            be finalized during database implementation.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>6. Database Relationship Overview</h2>
+
+        <ul>
+            <li>One user may generate multiple audit log records.</li>
+            <li>One security event may have one or more analysis records.</li>
+            <li>One security event may produce multiple alert records.</li>
+            <li>Each alert should reference its related security event.</li>
+        </ul>
+
+        <div class="code-example">users
+  |
+  |---- audit_logs
+
+security_events
+  |
+  |---- threat_predictions
+  |
+  |---- alerts</div>
+    </div>
+
+    <div class="panel">
+        <h2>7. Proposed API Specification</h2>
+        <p>
+            The backend may expose authenticated API
+            endpoints for communication between the
+            web interface, application server and
+            detection component.
+        </p>
+
+        <table class="doc-table">
+            <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/api/login</td>
+                <td>Authenticate a user</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/api/events</td>
+                <td>Retrieve authorized security events</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/api/events</td>
+                <td>Submit a security event</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/api/alerts</td>
+                <td>Retrieve alert records</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/api/reports</td>
+                <td>Retrieve available reports</td>
+            </tr>
+        </table>
+
+        <p class="note">
+            These are proposed endpoint designs,
+            not currently deployed API routes.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>8. Authentication and Data Protection</h2>
+
+        <ul>
+            <li>Store passwords using secure password hashing.</li>
+            <li>Validate and sanitize incoming application data.</li>
+            <li>Use HTTPS for production communication.</li>
+            <li>Protect API endpoints with authentication and authorization.</li>
+            <li>Use IAM roles and least-privilege policies for AWS access.</li>
+            <li>Never expose AWS access keys in frontend source code.</li>
+            <li>Record sensitive administrative actions in audit logs.</li>
+        </ul>
+    </div>
+
+    <div class="panel">
+        <h2>9. Error Handling and Logging</h2>
+        <p>
+            The application should handle invalid input,
+            failed authentication, unavailable services,
+            database errors and notification delivery
+            failures. Error records should include useful
+            diagnostic information without exposing
+            passwords, credentials or sensitive user data.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>10. Deployment Considerations</h2>
+        <p>
+            The current public website is hosted through
+            GitHub Pages and serves static HTML, CSS and
+            JavaScript. The PHP backend, Python detection
+            service and database will require a separate
+            server or cloud deployment environment.
+        </p>
+        <p>
+            Production deployment will require environment
+            configuration, secure secret management,
+            database connectivity, access policies and
+            testing of cloud integrations.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    CyberShield AI | Technical Documentation
+</footer>
+
+</body>
+</html>
