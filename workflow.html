@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Workflow | CyberShield AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: #e8f1ff;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #0d1b2e;
+            padding: 18px 7%;
+            border-bottom: 1px solid #203750;
+        }
+
+        nav a {
+            color: #52caff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1050px;
+            margin: 50px auto;
+        }
+
+        h1, h2 {
+            color: #52caff;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .intro {
+            color: #b9c9dc;
+            margin-bottom: 35px;
+        }
+
+        .step {
+            display: flex;
+            gap: 22px;
+            background: #102239;
+            border: 1px solid #203c59;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 18px;
+        }
+
+        .number {
+            min-width: 43px;
+            height: 43px;
+            background: #123e5b;
+            border: 1px solid #52caff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #52caff;
+            font-weight: bold;
+        }
+
+        .step p {
+            color: #c7d5e6;
+        }
+
+        .scenario {
+            background: #102d49;
+            border-left: 4px solid #52caff;
+            border-radius: 8px;
+            padding: 22px;
+            margin-top: 30px;
+        }
+
+        .note {
+            color: #f4ca78;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #8195ad;
+            border-top: 1px solid #203750;
+            margin-top: 50px;
+        }
+
+        @media(max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .step {
+                gap: 13px;
+                padding: 17px;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">← Back to Home</a>
+</nav>
+
+<div class="container">
+
+    <h1>System Workflow</h1>
+
+    <p class="intro">
+        A step-by-step explanation of how CyberShield AI
+        is designed to process security events, identify
+        potential threats and initiate appropriate responses.
+    </p>
+
+    <div class="step">
+        <div class="number">01</div>
+        <div>
+            <h2>Security Event Generation</h2>
+            <p>
+                The process begins when security-related
+                activity occurs in a monitored environment.
+                Events may include unusual login attempts,
+                unexpected network requests or suspicious
+                activity from a test dataset.
+            </p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">02</div>
+        <div>
+            <h2>Event Collection</h2>
+            <p>
+                Relevant event information is collected
+                from configured sources. Each record may
+                contain timestamps, source information,
+                event types and other useful attributes.
+            </p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">03</div>
+        <div>
+            <h2>Data Preprocessing</h2>
+            <p>
+                Collected records are checked, cleaned
+                and converted into a suitable format.
+                Missing values, inconsistent fields and
+                irrelevant information are handled before
+                model analysis.
+            </p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">04</div>
+        <div>
+            <h2>Feature Extraction</h2>
+            <p>
+                Relevant characteristics are selected
+                from the prepared data. These features
+                help the machine learning model examine
+                patterns associated with normal or
+                suspicious activities.
+            </p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">05</div>
+        <div>
+            <h2>AI-Based Threat Classification</h2>
+            <p>
+                The trained model analyzes the selected
+                features and produces a classification
+                result. Depending on the model and dataset,
+                an event may be classified as normal or
+                potentially malicious.
+            </p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">06</div>
+        <div>
+            <h2>Risk Assessment</h2>
+            <p>
+                The system evaluates the classification
+                result using predefined rules. The purpose
+                is to determine the event's priority and
+                whether further investigation or an alert
+                is required.
+            </p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">07</div>
+        <div>
+            <h2>Notification and Response</h2>
+            <p>
+                If an event meets the configured alert
+                conditions, the proposed notification
+                component can publish a message through
+                AWS SNS. Any prevention action must follow
+                authorized and controlled security rules.
+            </p>
+        </div>
+    </div>
+
+    <div class="step">
+        <div class="number">08</div>
+        <div>
+            <h2>Logging and Reporting</h2>
+            <p>
+                Event details, classification results
+                and response records are intended to be
+                stored for later investigation. Reports
+                can help evaluate detection performance
+                and identify recurring security patterns.
+            </p>
+        </div>
+    </div>
+
+    <div class="scenario">
+        <h2>Example: Suspicious Login Attempts</h2>
+        <p>
+            Imagine a test environment receives several
+            unusual login attempts within a short period.
+            The event records are collected and prepared
+            for analysis. The trained model evaluates
+            their characteristics and identifies a
+            potentially suspicious pattern. If the event
+            satisfies the configured alert rules, the
+            system can generate a security notification
+            and record the incident for investigation.
+        </p>
+    </div>
+
+    <p class="note">
+        Research implementation note: This workflow describes
+        the proposed system. Live event collection, model
+        execution and AWS notification integration will be
+        implemented and tested during backend development.
+    </p>
+
+</div>
+
+<footer>
+    CyberShield AI | System Workflow
+</footer>
+
+</body>
+</html>
