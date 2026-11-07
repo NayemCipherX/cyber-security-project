@@ -140,22 +140,75 @@ CyberShield AI | Academic Research Project | Dashboard demonstration with sample
 </div>
 
 <script>
-const buttons=document.querySelectorAll("[data-filter]");
-const rows=document.querySelectorAll("#logRows tr");
+<script>
+const buttons = document.querySelectorAll("[data-filter]");
+const rows = document.querySelector("#logRows");
 
-buttons.forEach(button=>{
-  button.addEventListener("click",()=>{
-    buttons.forEach(b=>b.classList.remove("selected"));
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    buttons.forEach(b => b.classList.remove("selected"));
     button.classList.add("selected");
 
-    const filter=button.dataset.filter;
-    rows.forEach(row=>{
-      row.style.display=
-        filter==="All" || row.dataset.severity===filter
+    const filter = button.dataset.filter;
+
+    rows.querySelectorAll("tr").forEach(row => {
+      row.style.display =
+        filter === "All" || row.dataset.severity === filter
         ? "" : "none";
     });
   });
 });
+
+let totalEvents = 1284;
+let threats = 24;
+let critical = 3;
+let eventNumber = 6;
+
+document.querySelector("#simulateBtn").addEventListener("click", () => {
+  const events = [
+    {name:"Suspicious login attempt",severity:"High",status:"Detected"},
+    {name:"Unusual network traffic",severity:"Medium",status:"Reviewing"},
+    {name:"Unauthorized access attempt",severity:"Critical",status:"Alert"},
+    {name:"Multiple failed login attempts",severity:"High",status:"Detected"}
+  ];
+
+  const event = events[Math.floor(Math.random() * events.length)];
+
+  totalEvents++;
+  threats++;
+
+  if(event.severity === "Critical") {
+    critical++;
+  }
+
+  document.querySelector("#totalEvents").textContent =
+    totalEvents.toLocaleString();
+
+  document.querySelector("#threatCount").textContent = threats;
+
+  document.querySelector("#criticalCount").textContent =
+    String(critical).padStart(2,"0");
+
+  const row = document.createElement("tr");
+  row.dataset.severity = event.severity;
+
+  const id = "EVT-" + String(eventNumber++).padStart(3,"0");
+
+  const severityClass = event.severity.toLowerCase();
+
+  row.innerHTML = `
+    <td>${id}</td>
+    <td>${event.name}</td>
+    <td><span class="severity ${severityClass}">${event.severity}</span></td>
+    <td>${event.status}</td>
+  `;
+
+  rows.prepend(row);
+
+  document.querySelector("#eventMessage").textContent =
+    "Demo event generated: " + event.name;
+});
+</script>
 </script>
 </body>
 </html>
