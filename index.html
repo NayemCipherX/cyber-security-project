@@ -2,391 +2,928 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI CyberShield | Cybersecurity Research</title>
-  <meta name="description" content="AI-Based Cyber Attack Detection and Prevention Using AWS Cloud Security.">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    html { scroll-behavior: smooth; }
+<title>CyberShield AI | AI Cybersecurity Research</title>
 
-    body {
-      background: #070b16;
-      color: #e8efff;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
+<meta name="description" content="Artificial Intelligence-Based Cyber Attack Detection and Prevention Using AWS Cloud Security.">
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .container {
-      width: min(1100px, 90%);
-      margin: auto;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(7, 11, 22, .94);
-      border-bottom: 1px solid #1b2c48;
-      backdrop-filter: blur(12px);
-    }
+body {
+    background: #070b16;
+    color: #e8efff;
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
 
-    .nav-content {
-      min-height: 72px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-    .logo {
-      font-size: 21px;
-      font-weight: bold;
-      color: #42caff;
-    }
+.container {
+    width: min(1100px, 90%);
+    margin: auto;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: #bdc9df;
-    }
+/* NAVIGATION */
 
-    .nav-links a:hover { color: #42caff; }
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(7,11,22,.96);
+    border-bottom: 1px solid #1b2c48;
+    backdrop-filter: blur(12px);
+}
 
-    .hero {
-      padding: 100px 0 85px;
-      background:
+.nav-content {
+    min-height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+    color: #42caff;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    gap: 19px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: #bdc9df;
+}
+
+.nav-links a:hover {
+    color: #42caff;
+}
+
+/* HERO */
+
+.hero {
+    padding: 105px 0 85px;
+    background:
         radial-gradient(ellipse at 80% 20%, #12345c 0%, transparent 45%),
         radial-gradient(ellipse at 10% 80%, #102448 0%, transparent 40%);
-    }
+}
 
-    .tag {
-      display: inline-block;
-      padding: 7px 14px;
-      border: 1px solid #176a9d;
-      border-radius: 30px;
-      color: #52caff;
-      font-size: 13px;
-      margin-bottom: 22px;
-    }
+.tag {
+    display: inline-block;
+    padding: 7px 14px;
+    border: 1px solid #176a9d;
+    border-radius: 30px;
+    color: #52caff;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
 
-    h1 {
-      max-width: 800px;
-      font-size: clamp(38px, 6vw, 66px);
-      line-height: 1.12;
-      margin-bottom: 22px;
-    }
+h1 {
+    max-width: 850px;
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+}
 
-    .blue { color: #43caff; }
+.blue {
+    color: #43caff;
+}
 
-    .hero p {
-      color: #aab9d2;
-      max-width: 680px;
-      font-size: 17px;
-      margin-bottom: 30px;
-    }
+.hero p {
+    color: #aab9d2;
+    max-width: 720px;
+    font-size: 17px;
+    margin-bottom: 28px;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      background: #168bd0;
-      border-radius: 7px;
-      font-weight: bold;
-      margin: 5px 8px 5px 0;
-    }
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #168bd0;
+    border-radius: 7px;
+    font-weight: bold;
+    margin: 5px 8px 5px 0;
+}
 
-    .btn.secondary {
-      background: transparent;
-      border: 1px solid #35516f;
-    }
+.btn.secondary {
+    background: transparent;
+    border: 1px solid #35516f;
+}
 
-    section { padding: 75px 0; }
+.btn:hover {
+    background: #20a5ef;
+}
 
-    .section-title {
-      font-size: 34px;
-      margin-bottom: 12px;
-    }
+/* COMMON SECTIONS */
 
-    .section-intro {
-      color: #9cacc5;
-      max-width: 700px;
-      margin-bottom: 35px;
-    }
+section {
+    padding: 75px 0;
+    scroll-margin-top: 80px;
+}
 
-    .status-panel {
-      background: #0d1729;
-      border: 1px solid #1c3958;
-      border-radius: 14px;
-      padding: 25px;
-      margin-top: 50px;
-    }
+.section-title {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
 
-    .status-heading {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
+.section-intro {
+    color: #9cacc5;
+    max-width: 750px;
+    margin-bottom: 35px;
+}
 
-    .status {
-      color: #48d9a0;
-      font-size: 13px;
-    }
+.content-text {
+    color: #aab9d2;
+}
 
-    .stats, .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 18px;
-    }
+.subheading {
+    color: #54caff;
+    font-size: 21px;
+    margin: 28px 0 12px;
+}
 
-    .stat, .card {
-      background: #0c1526;
-      border: 1px solid #1b304d;
-      padding: 23px;
-      border-radius: 12px;
-    }
+/* CARDS */
 
-    .stat small { color: #93a8c6; }
-    .stat h3 {
-      font-size: 29px;
-      color: #45caff;
-      margin-top: 8px;
-    }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
 
-    .card h3 {
-      color: #54caff;
-      margin-bottom: 10px;
-    }
+.card {
+    background: #0c1526;
+    border: 1px solid #1b304d;
+    padding: 23px;
+    border-radius: 12px;
+    transition: .25s;
+}
 
-    .card p, .content-text {
-      color: #aab9d2;
-    }
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #168bd0;
+}
 
-    .workflow {
-      border-left: 2px solid #168bd0;
-      padding-left: 25px;
-      display: grid;
-      gap: 22px;
-    }
+.card h3 {
+    color: #54caff;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
 
-    .workflow h3 { color: #52caff; }
+.card p {
+    color: #aab9d2;
+    font-size: 14px;
+}
 
-    .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+/* HIGHLIGHT PANEL */
 
-    .tech {
-      border: 1px solid #245077;
-      background: #101e34;
-      padding: 10px 17px;
-      border-radius: 7px;
-      color: #b9d9f6;
-    }
+.panel {
+    background: #0d1729;
+    border: 1px solid #1c3958;
+    border-radius: 13px;
+    padding: 25px;
+    margin-top: 25px;
+}
 
-    footer {
-      border-top: 1px solid #1b2c48;
-      padding: 28px 0;
-      text-align: center;
-      color: #8192ad;
-      font-size: 14px;
-    }
+/* LISTS */
 
-    @media(max-width: 650px) {
-      .nav-content {
+.info-list {
+    padding-left: 22px;
+    color: #aab9d2;
+}
+
+.info-list li {
+    margin: 10px 0;
+}
+
+/* WORKFLOW */
+
+.workflow {
+    border-left: 2px solid #168bd0;
+    padding-left: 25px;
+    display: grid;
+    gap: 25px;
+}
+
+.workflow h3 {
+    color: #52caff;
+}
+
+/* TECHNOLOGY */
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tech {
+    border: 1px solid #245077;
+    background: #101e34;
+    padding: 10px 17px;
+    border-radius: 7px;
+    color: #b9d9f6;
+    font-size: 14px;
+}
+
+/* RESEARCH */
+
+.research-card {
+    background: #0c1526;
+    border: 1px solid #1b304d;
+    padding: 23px;
+    border-radius: 12px;
+}
+
+.research-card h3 {
+    color: #54caff;
+    margin-bottom: 10px;
+}
+
+.research-card p {
+    color: #aab9d2;
+    font-size: 14px;
+}
+
+/* CONTACT */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.contact-item {
+    background: #0c1526;
+    border: 1px solid #1b304d;
+    padding: 22px;
+    border-radius: 10px;
+}
+
+.contact-item h3 {
+    color: #52caff;
+    margin-bottom: 8px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid #1b2c48;
+    padding: 35px 0;
+    text-align: center;
+    color: #8192ad;
+    font-size: 13px;
+}
+
+.project-identity {
+    color: #48caff;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 12px 0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+    .nav-content {
         padding: 15px 0;
         align-items: flex-start;
         flex-direction: column;
-      }
-      .nav-links { gap: 13px; }
-      .hero { padding: 70px 0; }
     }
-  </style>
+
+    .nav-links {
+        gap: 13px;
+    }
+}
+
+@media(max-width: 600px) {
+    .hero {
+        padding: 70px 0;
+    }
+
+    section {
+        padding: 55px 0;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<!-- NAVIGATION -->
+
 <nav>
- <div class="nav-links">
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#features">Features</a>
-  <a href="#workflow">Workflow</a>
-  <a href="#technology">Technology</a>
-  <a href="dashboard.html">Dashboard</a>
+<div class="container nav-content">
+
+    <a href="#home" class="logo">
+        ⌁ CyberShield AI
+    </a>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+        <a href="dashboard.html">Dashboard</a>
+    </div>
+
 </div>
-  </div>
 </nav>
 
-<header class="hero" id="home">
-  <div class="container">
-    <span class="tag">AI + MACHINE LEARNING + AWS SECURITY</span>
-    <h1>Intelligent Cyber Attack <span class="blue">Detection & Prevention</span></h1>
-    <p>
-      A research project exploring how Artificial Intelligence and
-      AWS Cloud Security can work together to identify suspicious
-      activities, detect potential cyber attacks and support
-      controlled security responses.
-    </p>
-    <a href="#about" class="btn">Explore Project →</a>
-    <a href="#technology" class="btn secondary">Our Technology</a>
 
-    <div class="status-panel">
-      <div class="status-heading">
-        <strong>Security Monitoring Preview</strong>
-        <span class="status">● DEMO INTERFACE</span>
-      </div>
-      <div class="stats">
-        <div class="stat">
-          <small>Detection Engine</small>
-          <h3>Planned</h3>
+<!-- 1. HOME -->
+
+<header class="hero" id="home">
+<div class="container">
+
+    <span class="tag">
+        AI + MACHINE LEARNING + AWS SECURITY
+    </span>
+
+    <h1>
+        Intelligent Cyber Attack
+        <span class="blue">Detection & Prevention</span>
+    </h1>
+
+    <p>
+        Artificial Intelligence-Based Cyber Attack Detection
+        and Prevention Using AWS Cloud Security. A research
+        initiative exploring intelligent threat identification,
+        cloud security monitoring and controlled cyber defense.
+    </p>
+
+    <a href="#about" class="btn">Explore Project →</a>
+    <a href="dashboard.html" class="btn secondary">
+        View Dashboard
+    </a>
+
+    <div class="panel">
+
+        <h3 class="blue">Project Overview</h3>
+
+        <p class="content-text">
+            This project aims to combine Artificial Intelligence,
+            Machine Learning and AWS Cloud Security to identify
+            suspicious activities and support security response.
+        </p>
+
+        <div class="cards" style="margin-top:22px">
+
+            <div class="card">
+                <h3>AI Detection</h3>
+                <p>Machine learning-based security event analysis.</p>
+            </div>
+
+            <div class="card">
+                <h3>AWS Cloud</h3>
+                <p>Cloud infrastructure and security services.</p>
+            </div>
+
+            <div class="card">
+                <h3>Threat Alerts</h3>
+                <p>Planned notifications through AWS SNS.</p>
+            </div>
+
         </div>
-        <div class="stat">
-          <small>Cloud Platform</small>
-          <h3>AWS</h3>
-        </div>
-        <div class="stat">
-          <small>AI Model</small>
-          <h3>ML</h3>
-        </div>
-      </div>
-      <p style="margin-top:18px;color:#8296b4;font-size:13px">
-        Preview only — live monitoring and detection will be
-        connected during backend development.
-      </p>
+
+        <p class="content-text" style="margin-top:18px;font-size:13px">
+            Current website dashboard uses demonstration data.
+            Live AI detection and AWS monitoring are planned for
+            backend implementation.
+        </p>
+
     </div>
-  </div>
+
+</div>
 </header>
 
+
+<!-- 2. ABOUT PROJECT -->
+
 <section id="about">
-  <div class="container">
-    <h2 class="section-title">About the <span class="blue">Project</span></h2>
+<div class="container">
+
+    <h2 class="section-title">
+        About the <span class="blue">Project</span>
+    </h2>
+
     <p class="section-intro">
-      Building a smarter approach to cloud security through
-      machine learning, threat monitoring and AWS services.
+        Understanding the research motivation, problem,
+        objectives and background of the proposed system.
     </p>
+
+    <h3 class="subheading">Project Overview</h3>
+
     <p class="content-text">
-      This project focuses on researching and developing an
-      AI-based cybersecurity system that can analyze security
-      events, identify unusual patterns and help administrators
-      respond to potential threats in a cloud environment.
+        The proposed system focuses on developing an
+        Artificial Intelligence-based cybersecurity solution
+        that analyzes security-related events and identifies
+        potentially malicious activities in a cloud environment.
+        AWS services will support secure infrastructure,
+        event storage and notification mechanisms.
     </p>
-  </div>
+
+    <h3 class="subheading">Problem Statement</h3>
+
+    <p class="content-text">
+        Traditional security monitoring often depends on
+        predefined rules and manual investigation. These
+        approaches may struggle to identify unusual patterns
+        across large volumes of security events. Delayed
+        identification can increase the time required to
+        investigate and respond to potential cyber attacks.
+    </p>
+
+    <p class="content-text" style="margin-top:12px">
+        This research explores how machine learning can assist
+        in identifying suspicious patterns and how AWS cloud
+        services can support centralized monitoring and
+        controlled security responses.
+    </p>
+
+    <h3 class="subheading">Research Objectives</h3>
+
+    <ul class="info-list">
+        <li>Study AI and machine learning techniques for cyber attack detection.</li>
+        <li>Analyze security-related events to identify suspicious activities.</li>
+        <li>Design an AWS-based cloud security architecture.</li>
+        <li>Develop a mechanism for classifying potential threats.</li>
+        <li>Explore controlled prevention and response mechanisms.</li>
+        <li>Integrate AWS SNS for security notification delivery.</li>
+        <li>Present security events and analysis through a dashboard.</li>
+    </ul>
+
+    <h3 class="subheading">Research Background</h3>
+
+    <p class="content-text">
+        The increasing use of cloud computing has created a
+        growing need for effective security monitoring.
+        Artificial Intelligence and Machine Learning provide
+        techniques for analyzing patterns in security data.
+        Cloud platforms such as Amazon Web Services provide
+        infrastructure and services that can support event
+        collection, access management, storage and alerting.
+        This project investigates the combination of these
+        technologies in a proposed cybersecurity framework.
+    </p>
+
+</div>
 </section>
 
+
+<!-- 3. FEATURES -->
+
 <section id="features">
-  <div class="container">
-    <h2 class="section-title">Core <span class="blue">Features</span></h2>
+<div class="container">
+
+    <h2 class="section-title">
+        Core <span class="blue">Features</span>
+    </h2>
+
     <p class="section-intro">
-      The planned components of our intelligent security platform.
+        Main capabilities planned for the intelligent
+        cybersecurity platform.
     </p>
 
     <div class="cards">
-      <div class="card">
-        <h3>◈ AI Threat Detection</h3>
-        <p>Analyze security-related data to identify suspicious
-        patterns using machine learning.</p>
-      </div>
-      <div class="card">
-        <h3>⌁ Cloud Security</h3>
-        <p>Use AWS security services and access controls to
-        support secure cloud infrastructure.</p>
-      </div>
-      <div class="card">
-        <h3>⚡ Security Alerts</h3>
-        <p>Plan automated notifications through AWS SNS when
-        defined security events occur.</p>
-      </div>
-      <div class="card">
-        <h3>▣ Monitoring Dashboard</h3>
-        <p>Present detection results, event history and
-        security information in one interface.</p>
-      </div>
-      <div class="card">
-        <h3>⛨ Controlled Prevention</h3>
-        <p>Design controlled response actions for verified
-        threats with appropriate safeguards.</p>
-      </div>
-      <div class="card">
-        <h3>▤ Event Records</h3>
-        <p>Store and review security events for analysis,
-        investigation and reporting.</p>
-      </div>
+
+        <div class="card">
+            <h3>◈ AI Threat Detection</h3>
+            <p>
+                Analyze security data and identify suspicious
+                patterns using machine learning techniques.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>⌁ AWS Cloud Security</h3>
+            <p>
+                Use AWS infrastructure, IAM access controls
+                and cloud security services.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Automated Alerts</h3>
+            <p>
+                Plan security notifications through AWS SNS
+                when defined threat conditions occur.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>▣ Security Dashboard</h3>
+            <p>
+                Display security events, detection results
+                and alert history in one interface.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>⛨ Controlled Prevention</h3>
+            <p>
+                Design safeguarded response actions for
+                verified threats with appropriate authorization.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>▤ Event Management</h3>
+            <p>
+                Store and review security event records
+                for investigation and reporting.
+            </p>
+        </div>
+
     </div>
-  </div>
+
+</div>
 </section>
+
+
+<!-- 4. SYSTEM ARCHITECTURE -->
+
+<section id="architecture">
+<div class="container">
+
+    <h2 class="section-title">
+        System <span class="blue">Architecture</span>
+    </h2>
+
+    <p class="section-intro">
+        Proposed components and their roles in the
+        AI-powered cloud security framework.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>01. Data Collection</h3>
+            <p>
+                Collect relevant security events and
+                monitoring information from selected sources.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>02. AWS Storage</h3>
+            <p>
+                Use Amazon S3 and Amazon RDS/MySQL
+                for suitable event and application data storage.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>03. AI/ML Analysis</h3>
+            <p>
+                Process selected data using Python-based
+                machine learning models.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>04. Threat Classification</h3>
+            <p>
+                Classify analyzed events into suitable
+                threat categories based on model results.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>05. AWS SNS</h3>
+            <p>
+                Send notifications to authorized
+                administrators when configured conditions occur.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>06. Security Dashboard</h3>
+            <p>
+                Present event records, alerts and
+                monitoring information to administrators.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="panel">
+        <h3 class="blue">Security and Access Management</h3>
+        <p class="content-text">
+            AWS IAM will be considered for access control
+            and permission management. Prevention actions
+            will be designed with safeguards, authorization
+            checks and logging.
+        </p>
+    </div>
+
+</div>
+</section>
+
+
+<!-- SYSTEM WORKFLOW -->
 
 <section id="workflow">
-  <div class="container">
-    <h2 class="section-title">System <span class="blue">Workflow</span></h2>
+<div class="container">
+
+    <h2 class="section-title">
+        System <span class="blue">Workflow</span>
+    </h2>
+
     <p class="section-intro">
-      An overview of the proposed detection and response process.
+        Proposed end-to-end process of threat detection
+        and controlled response.
     </p>
+
     <div class="workflow">
-      <div>
-        <h3>01 — Data Collection</h3>
-        <p class="content-text">Collect relevant cloud and system security events.</p>
-      </div>
-      <div>
-        <h3>02 — AI Analysis</h3>
-        <p class="content-text">Analyze collected data to identify unusual activity.</p>
-      </div>
-      <div>
-        <h3>03 — Threat Identification</h3>
-        <p class="content-text">Classify potential threats based on detection results.</p>
-      </div>
-      <div>
-        <h3>04 — Alert & Response</h3>
-        <p class="content-text">Notify administrators and apply approved response actions.</p>
-      </div>
-      <div>
-        <h3>05 — Monitoring & Reporting</h3>
-        <p class="content-text">Record events and display results on the dashboard.</p>
-      </div>
+
+        <div>
+            <h3>01 — Data Collection</h3>
+            <p class="content-text">
+                Collect relevant cloud and system security events.
+            </p>
+        </div>
+
+        <div>
+            <h3>02 — Data Processing</h3>
+            <p class="content-text">
+                Clean, prepare and organize collected
+                information for analysis.
+            </p>
+        </div>
+
+        <div>
+            <h3>03 — AI/ML Analysis</h3>
+            <p class="content-text">
+                Apply the selected machine learning model
+                to analyze patterns and identify anomalies.
+            </p>
+        </div>
+
+        <div>
+            <h3>04 — Threat Classification</h3>
+            <p class="content-text">
+                Categorize potential threats based on
+                the model's output and configured criteria.
+            </p>
+        </div>
+
+        <div>
+            <h3>05 — Alert and Prevention</h3>
+            <p class="content-text">
+                Notify administrators through configured
+                AWS SNS notifications and evaluate authorized
+                response actions.
+            </p>
+        </div>
+
+        <div>
+            <h3>06 — Monitoring and Reporting</h3>
+            <p class="content-text">
+                Record results and present security
+                information through the dashboard.
+            </p>
+        </div>
+
     </div>
-  </div>
+
+</div>
 </section>
+
+
+<!-- 5. TECHNOLOGY -->
 
 <section id="technology">
-  <div class="container">
-    <h2 class="section-title">Technology <span class="blue">Stack</span></h2>
+<div class="container">
+
+    <h2 class="section-title">
+        Technology <span class="blue">Stack</span>
+    </h2>
+
     <p class="section-intro">
-      Technologies planned for the research and implementation.
+        Technologies selected or planned for the
+        research and implementation.
     </p>
+
+    <h3 class="subheading">Programming and Development</h3>
+
     <div class="tech-list">
-      <span class="tech">Python</span>
-      <span class="tech">Machine Learning</span>
-      <span class="tech">AWS S3</span>
-      <span class="tech">AWS IAM</span>
-      <span class="tech">AWS RDS / MySQL</span>
-      <span class="tech">AWS SNS</span>
-      <span class="tech">HTML & CSS</span>
-      <span class="tech">JavaScript</span>
+        <span class="tech">Python</span>
+        <span class="tech">Machine Learning</span>
+        <span class="tech">HTML</span>
+        <span class="tech">CSS</span>
+        <span class="tech">JavaScript</span>
+        <span class="tech">PHP</span>
+        <span class="tech">MySQL</span>
     </div>
-  </div>
+
+    <h3 class="subheading">AWS Cloud Services</h3>
+
+    <div class="tech-list">
+        <span class="tech">Amazon S3</span>
+        <span class="tech">Amazon RDS</span>
+        <span class="tech">AWS IAM</span>
+        <span class="tech">Amazon SNS</span>
+        <span class="tech">Amazon EC2</span>
+    </div>
+
+</div>
 </section>
 
+
+<!-- 6. RESEARCH AND DOCUMENTATION -->
+
+<section id="research">
+<div class="container">
+
+    <h2 class="section-title">
+        Research & <span class="blue">Documentation</span>
+    </h2>
+
+    <p class="section-intro">
+        Research materials and technical documentation
+        supporting the development of this project.
+    </p>
+
+    <div class="cards">
+
+        <div class="research-card">
+            <h3>Research Background</h3>
+            <p>
+                Study previous research on machine learning,
+                anomaly detection, cloud security and
+                cyber attack prevention.
+            </p>
+        </div>
+
+        <div class="research-card">
+            <h3>Literature Review</h3>
+            <p>
+                Compare existing approaches, identify
+                limitations and explore research opportunities.
+            </p>
+        </div>
+
+        <div class="research-card">
+            <h3>Research Methodology</h3>
+            <p>
+                Define data preparation, model selection,
+                implementation, testing and evaluation methods.
+            </p>
+        </div>
+
+        <div class="research-card">
+            <h3>System Documentation</h3>
+            <p>
+                Document system requirements, architecture,
+                database design and implementation workflow.
+            </p>
+        </div>
+
+        <div class="research-card">
+            <h3>Testing and Evaluation</h3>
+            <p>
+                Evaluate the proposed model using suitable
+                metrics such as precision, recall, F1-score
+                and detection performance.
+            </p>
+        </div>
+
+        <div class="research-card">
+            <h3>Future Development</h3>
+            <p>
+                Explore improved models, additional
+                monitoring sources and more advanced
+                cloud security integrations.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="panel">
+        <h3 class="blue">Project Documentation</h3>
+        <p class="content-text">
+            Research papers, final reports, architecture
+            diagrams and implementation documents will
+            be added here as they are prepared and verified.
+        </p>
+    </div>
+
+</div>
+</section>
+
+
+<!-- 7. CONTACT AND DEVELOPER -->
+
+<section id="contact">
+<div class="container">
+
+    <h2 class="section-title">
+        Developer <span class="blue">& Contact</span>
+    </h2>
+
+    <p class="section-intro">
+        Information about the academic project and
+        its development.
+    </p>
+
+    <div class="contact-grid">
+
+        <div class="contact-item">
+            <h3>Project Developer</h3>
+            <p class="content-text">
+                Developer Name: Add your preferred name
+            </p>
+            <p class="content-text">
+                Role: Research Project Developer
+            </p>
+        </div>
+
+        <div class="contact-item">
+            <h3>University Information</h3>
+            <p class="content-text">
+                University: Add university name
+            </p>
+            <p class="content-text">
+                Department: Computer Science and Engineering
+            </p>
+        </div>
+
+        <div class="contact-item">
+            <h3>Project Information</h3>
+            <p class="content-text">
+                Field: Artificial Intelligence and Cybersecurity
+            </p>
+            <p class="content-text">
+                Platform: AWS Cloud Security
+            </p>
+        </div>
+
+        <div class="contact-item">
+            <h3>Contact</h3>
+            <p class="content-text">
+                Email: Add your preferred contact email
+            </p>
+            <p class="content-text">
+                GitHub: Add your project repository link
+            </p>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- FOOTER -->
+
 <footer>
-  <div class="container">
-    <p>AI-Based Cyber Attack Detection and Prevention Using AWS Cloud Security</p>
+<div class="container">
+
+    <p>
+        Artificial Intelligence-Based Cyber Attack
+        Detection and Prevention Using AWS Cloud Security
+    </p>
+
     <p>Academic Research Project | CyberShield AI</p>
-    <p style="margin-top:8px">© 2026 CyberShield AI — Project Website</p>
-  </div>
+
+    <p class="project-identity">
+        //Sudo-Squad//Star
+    </p>
+
+    <p>
+        © 2026 CyberShield AI | Project Website
+    </p>
+
+    <p style="margin-top:12px">
+        <a href="#home">Back to Top ↑</a>
+        &nbsp; | &nbsp;
+        <a href="dashboard.html">Security Dashboard</a>
+    </p>
+
+</div>
 </footer>
-<a href="dashboard.html">Dashboard</a>
+
 </body>
 </html>
