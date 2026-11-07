@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Cyber Security Project</title>
+  <title>AI CyberShield | Cybersecurity Research</title>
+  <meta name="description" content="AI-Based Cyber Attack Detection and Prevention Using AWS Cloud Security.">
   <style>
     * {
       margin: 0;
@@ -12,169 +13,381 @@
       box-sizing: border-box;
     }
 
+    html { scroll-behavior: smooth; }
+
     body {
+      background: #070b16;
+      color: #e8efff;
       font-family: Arial, sans-serif;
-      background: #08111f;
-      color: white;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
-    header {
-      padding: 22px 8%;
-      background: #101d30;
-      border-bottom: 1px solid #263750;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    nav h2 {
-      color: #38bdf8;
-    }
-
-    nav a {
-      color: white;
+    a {
+      color: inherit;
       text-decoration: none;
-      margin-left: 18px;
     }
 
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-    }
-
-    .hero h1 {
-      font-size: 42px;
-      color: #38bdf8;
-      max-width: 850px;
+    .container {
+      width: min(1100px, 90%);
       margin: auto;
     }
 
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(7, 11, 22, .94);
+      border-bottom: 1px solid #1b2c48;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-content {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+      color: #42caff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: #bdc9df;
+    }
+
+    .nav-links a:hover { color: #42caff; }
+
+    .hero {
+      padding: 100px 0 85px;
+      background:
+        radial-gradient(ellipse at 80% 20%, #12345c 0%, transparent 45%),
+        radial-gradient(ellipse at 10% 80%, #102448 0%, transparent 40%);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 14px;
+      border: 1px solid #176a9d;
+      border-radius: 30px;
+      color: #52caff;
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      max-width: 800px;
+      font-size: clamp(38px, 6vw, 66px);
+      line-height: 1.12;
+      margin-bottom: 22px;
+    }
+
+    .blue { color: #43caff; }
+
     .hero p {
-      max-width: 700px;
-      margin: 20px auto;
-      color: #cbd5e1;
+      color: #aab9d2;
+      max-width: 680px;
+      font-size: 17px;
+      margin-bottom: 30px;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #0284c7;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
+      padding: 12px 22px;
+      background: #168bd0;
+      border-radius: 7px;
+      font-weight: bold;
+      margin: 5px 8px 5px 0;
     }
 
-    section {
-      padding: 55px 10%;
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid #35516f;
     }
 
-    section h2 {
-      color: #38bdf8;
-      margin-bottom: 20px;
+    section { padding: 75px 0; }
+
+    .section-title {
+      font-size: 34px;
+      margin-bottom: 12px;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(210px, 1fr));
-      gap: 20px;
+    .section-intro {
+      color: #9cacc5;
+      max-width: 700px;
+      margin-bottom: 35px;
     }
 
-    .card {
-      background: #13243a;
+    .status-panel {
+      background: #0d1729;
+      border: 1px solid #1c3958;
+      border-radius: 14px;
       padding: 25px;
-      border-radius: 10px;
-      border: 1px solid #263750;
+      margin-top: 50px;
+    }
+
+    .status-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .status {
+      color: #48d9a0;
+      font-size: 13px;
+    }
+
+    .stats, .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+    }
+
+    .stat, .card {
+      background: #0c1526;
+      border: 1px solid #1b304d;
+      padding: 23px;
+      border-radius: 12px;
+    }
+
+    .stat small { color: #93a8c6; }
+    .stat h3 {
+      font-size: 29px;
+      color: #45caff;
+      margin-top: 8px;
     }
 
     .card h3 {
-      color: #7dd3fc;
+      color: #54caff;
       margin-bottom: 10px;
     }
 
+    .card p, .content-text {
+      color: #aab9d2;
+    }
+
+    .workflow {
+      border-left: 2px solid #168bd0;
+      padding-left: 25px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .workflow h3 { color: #52caff; }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tech {
+      border: 1px solid #245077;
+      background: #101e34;
+      padding: 10px 17px;
+      border-radius: 7px;
+      color: #b9d9f6;
+    }
+
     footer {
+      border-top: 1px solid #1b2c48;
+      padding: 28px 0;
       text-align: center;
-      padding: 25px;
-      background: #101d30;
-      color: #94a3b8;
+      color: #8192ad;
+      font-size: 14px;
+    }
+
+    @media(max-width: 650px) {
+      .nav-content {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .nav-links { gap: 13px; }
+      .hero { padding: 70px 0; }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <nav>
-      <h2>NayemCipherX</h2>
-      <div>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#technology">Technology</a>
-      </div>
-    </nav>
-  </header>
-
-  <div class="hero">
-    <h1>AI-Based Cyber Attack Detection and Prevention</h1>
-    <p>
-      An academic project exploring Artificial Intelligence,
-      Machine Learning and AWS Cloud Security to detect
-      and prevent potential cyber attacks.
-    </p>
-    <a href="#about" class="btn">Explore Project</a>
+<nav>
+  <div class="container nav-content">
+    <a href="#home" class="logo">⌁ CyberShield AI</a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#technology">Technology</a>
+    </div>
   </div>
+</nav>
 
-  <section id="about">
-    <h2>About The Project</h2>
+<header class="hero" id="home">
+  <div class="container">
+    <span class="tag">AI + MACHINE LEARNING + AWS SECURITY</span>
+    <h1>Intelligent Cyber Attack <span class="blue">Detection & Prevention</span></h1>
     <p>
-      This project aims to develop an intelligent security
-      system that analyzes network activity, identifies
-      suspicious behavior and helps detect potential
-      cyber threats using AI and Machine Learning.
+      A research project exploring how Artificial Intelligence and
+      AWS Cloud Security can work together to identify suspicious
+      activities, detect potential cyber attacks and support
+      controlled security responses.
     </p>
-  </section>
+    <a href="#about" class="btn">Explore Project →</a>
+    <a href="#technology" class="btn secondary">Our Technology</a>
 
-  <section id="features">
-    <h2>Key Features</h2>
+    <div class="status-panel">
+      <div class="status-heading">
+        <strong>Security Monitoring Preview</strong>
+        <span class="status">● DEMO INTERFACE</span>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <small>Detection Engine</small>
+          <h3>Planned</h3>
+        </div>
+        <div class="stat">
+          <small>Cloud Platform</small>
+          <h3>AWS</h3>
+        </div>
+        <div class="stat">
+          <small>AI Model</small>
+          <h3>ML</h3>
+        </div>
+      </div>
+      <p style="margin-top:18px;color:#8296b4;font-size:13px">
+        Preview only — live monitoring and detection will be
+        connected during backend development.
+      </p>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About the <span class="blue">Project</span></h2>
+    <p class="section-intro">
+      Building a smarter approach to cloud security through
+      machine learning, threat monitoring and AWS services.
+    </p>
+    <p class="content-text">
+      This project focuses on researching and developing an
+      AI-based cybersecurity system that can analyze security
+      events, identify unusual patterns and help administrators
+      respond to potential threats in a cloud environment.
+    </p>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <h2 class="section-title">Core <span class="blue">Features</span></h2>
+    <p class="section-intro">
+      The planned components of our intelligent security platform.
+    </p>
+
     <div class="cards">
       <div class="card">
-        <h3>AI Detection</h3>
-        <p>Analyze network activity to identify suspicious patterns.</p>
+        <h3>◈ AI Threat Detection</h3>
+        <p>Analyze security-related data to identify suspicious
+        patterns using machine learning.</p>
       </div>
       <div class="card">
-        <h3>Threat Monitoring</h3>
-        <p>Monitor security events and potential threats.</p>
+        <h3>⌁ Cloud Security</h3>
+        <p>Use AWS security services and access controls to
+        support secure cloud infrastructure.</p>
       </div>
       <div class="card">
-        <h3>AWS Security</h3>
-        <p>Explore cloud-based security and access management.</p>
+        <h3>⚡ Security Alerts</h3>
+        <p>Plan automated notifications through AWS SNS when
+        defined security events occur.</p>
       </div>
       <div class="card">
-        <h3>Security Alerts</h3>
-        <p>Plan notifications for detected security incidents.</p>
+        <h3>▣ Monitoring Dashboard</h3>
+        <p>Present detection results, event history and
+        security information in one interface.</p>
+      </div>
+      <div class="card">
+        <h3>⛨ Controlled Prevention</h3>
+        <p>Design controlled response actions for verified
+        threats with appropriate safeguards.</p>
+      </div>
+      <div class="card">
+        <h3>▤ Event Records</h3>
+        <p>Store and review security events for analysis,
+        investigation and reporting.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="technology">
-    <h2>Technology Stack</h2>
-    <p>
-      Python | Machine Learning | AWS Cloud | MySQL |
-      HTML | CSS
+<section id="workflow">
+  <div class="container">
+    <h2 class="section-title">System <span class="blue">Workflow</span></h2>
+    <p class="section-intro">
+      An overview of the proposed detection and response process.
     </p>
-  </section>
+    <div class="workflow">
+      <div>
+        <h3>01 — Data Collection</h3>
+        <p class="content-text">Collect relevant cloud and system security events.</p>
+      </div>
+      <div>
+        <h3>02 — AI Analysis</h3>
+        <p class="content-text">Analyze collected data to identify unusual activity.</p>
+      </div>
+      <div>
+        <h3>03 — Threat Identification</h3>
+        <p class="content-text">Classify potential threats based on detection results.</p>
+      </div>
+      <div>
+        <h3>04 — Alert & Response</h3>
+        <p class="content-text">Notify administrators and apply approved response actions.</p>
+      </div>
+      <div>
+        <h3>05 — Monitoring & Reporting</h3>
+        <p class="content-text">Record events and display results on the dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <p>Academic Project | Cyber Security Research</p>
-    <p>GitHub: NayemCipherX</p>
-  </footer>
+<section id="technology">
+  <div class="container">
+    <h2 class="section-title">Technology <span class="blue">Stack</span></h2>
+    <p class="section-intro">
+      Technologies planned for the research and implementation.
+    </p>
+    <div class="tech-list">
+      <span class="tech">Python</span>
+      <span class="tech">Machine Learning</span>
+      <span class="tech">AWS S3</span>
+      <span class="tech">AWS IAM</span>
+      <span class="tech">AWS RDS / MySQL</span>
+      <span class="tech">AWS SNS</span>
+      <span class="tech">HTML & CSS</span>
+      <span class="tech">JavaScript</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>AI-Based Cyber Attack Detection and Prevention Using AWS Cloud Security</p>
+    <p>Academic Research Project | CyberShield AI</p>
+    <p style="margin-top:8px">© 2026 CyberShield AI — Project Website</p>
+  </div>
+</footer>
 
 </body>
 </html>
