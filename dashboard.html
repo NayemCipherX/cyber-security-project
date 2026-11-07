@@ -371,6 +371,18 @@ footer {
     color: #7185a1;
 }
 
+    /* EXPORT CSV BUTTON */
+#exportBtn {
+    background: #12649b;
+    border-color: #238bc9;
+    color: white;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+#exportBtn:hover {
+    background: #168bd0;
+}
 </style>
 </head>
 
@@ -651,6 +663,7 @@ const buttons = document.querySelectorAll("[data-filter]");
 const rows = document.querySelector("#logRows");
     const searchInput = document.querySelector("#logSearch");
 const simulateBtn = document.querySelector("#simulateBtn");
+    const exportBtn = document.querySelector("#exportBtn");
 const recentAlerts = document.querySelector("#alerts");
 
 let totalEvents = 1284;
@@ -940,7 +953,53 @@ try {
         "Demo event generated: " + event.name;
 
 });
+// EXPORT SECURITY LOGS AS CSV
+exportBtn.addEventListener("click", () => {
 
+    const tableRows = rows.querySelectorAll("tr");
+
+    let csvContent = "Event ID,Event Description,Severity,Status\n";
+
+    tableRows.forEach(row => {
+
+        const cells = row.querySelectorAll("td");
+
+        const rowData = [
+            cells[0].textContent.trim(),
+            cells[1].textContent.trim(),
+            cells[2].textContent.trim(),
+            cells[3].textContent.trim()
+        ];
+
+        const escapedData = rowData.map(value => {
+            return '"' + value.replace(/"/g, '""') + '"';
+        });
+
+        csvContent += escapedData.join(",") + "\n";
+
+    });
+
+    const blob = new Blob(
+        [csvContent],
+        { type: "text/csv;charset=utf-8;" }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const downloadLink = document.createElement("a");
+
+    downloadLink.href = url;
+    downloadLink.download = "CyberShield_Security_Logs.csv";
+
+    document.body.appendChild(downloadLink);
+
+    downloadLink.click();
+
+    document.body.removeChild(downloadLink);
+
+    URL.revokeObjectURL(url);
+
+});
 </script>
 
 </body>
