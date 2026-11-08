@@ -1021,7 +1021,8 @@ exportBtn.addEventListener("click", () => {
     URL.revokeObjectURL(url);
 
 });
-    // CLEAR SECURITY LOGS
+    
+ // CLEAR SECURITY LOGS
 clearBtn.addEventListener("click", () => {
 
     const confirmClear = confirm(
@@ -1030,18 +1031,39 @@ clearBtn.addEventListener("click", () => {
 
     if (confirmClear) {
 
+        // CLEAR SECURITY LOG TABLE
         rows.innerHTML = "";
 
-        recentAlerts.innerHTML = "";
+        // REMOVE ALERT ITEMS ONLY
+        recentAlerts.querySelectorAll(".activity").forEach(alert => {
+            alert.remove();
+        });
 
+        // RESET SEARCH
+        searchInput.value = "";
+
+        // RESET FILTER
+        activeFilter = "All";
+
+        buttons.forEach(button => {
+            button.classList.remove("selected");
+
+            if (button.dataset.filter === "All") {
+                button.classList.add("selected");
+            }
+        });
+
+        // UPDATE MESSAGE
         document.querySelector("#eventMessage").textContent =
             "All demo security logs have been cleared.";
 
+        // APPLY FILTER
+        applyFilter();
+
     }
 
-    
 });
-</script>
+
 
 </body>
 </html>
