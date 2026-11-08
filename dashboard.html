@@ -696,6 +696,164 @@ let activeFilter = "All";
 
 // WEEKLY ANALYTICS DATA
 const weeklyCounts = [35, 65, 48, 85, 55, 72, 42];
+    
+ // SAVE DASHBOARD DATA
+function saveDashboardData() {
+
+    const dashboardData = {
+
+        totalEvents: totalEvents,
+        threats: threats,
+        critical: critical,
+        eventNumber: eventNumber,
+
+        weeklyCounts: weeklyCounts,
+
+        logs: Array.from(
+            rows.querySelectorAll("tr")
+        ).map(row => ({
+            id: row.cells[0].textContent,
+            name: row.cells[1].textContent,
+            severity: row.dataset.severity,
+            status: row.cells[3].textContent
+        })),
+
+        alerts: Array.from(
+            recentAlerts.querySelectorAll(".activity")
+        ).map(alert => ({
+            name: alert.children[0].textContent,
+            severity: alert.children[1].textContent
+        }))
+
+    };
+
+    localStorage.setItem(
+        "cyberShieldDashboard",
+        JSON.stringify(dashboardData)
+    );
+
+}
+
+
+// LOAD DASHBOARD DATA
+function loadDashboardData() {
+
+    const savedData = localStorage.getItem(
+        "cyberShieldDashboard"
+    );
+
+    if (!savedData) return;
+
+    try {
+
+        const data = JSON.parse(savedData);
+
+        totalEvents = data.totalEvents;
+        threats = data.threats;
+        critical = data.critical;
+        eventNumber = data.eventNumber;
+
+        weeklyCounts.splice(
+            0,
+            weeklyCounts.length,
+            ...data.weeklyCounts
+        );
+
+        document.querySelector("#totalEvents").textContent =
+            totalEvents.toLocaleString();
+
+        document.querySelector("#threatCount").textContent =
+            threats;
+
+        document.querySelector("#criticalCount").textContent =
+            String(critical).padStart(2, "0");
+
+        // RESTORE SECURITY LOGS
+        rows.innerHTML = "";
+
+        data.logs.forEach(log => {
+
+            const row = document.createElement("tr");
+
+            row.dataset.severity = log.severity;
+
+            row.innerHTML = `
+                <td></td>
+                <td></td>
+                <td>
+                    <span class="severity"></span>
+                </td>
+                <td></td>
+            `;
+
+            row.cells[0].textContent = log.id;
+            row.cells[1].textContent = log.name;
+
+            const severityLabel =
+                row.querySelector(".severity");
+
+            severityLabel.className =
+                "severity " + log.severity.toLowerCase();
+
+            severityLabel.textContent = log.severity;
+
+            row.cells[3].textContent = log.status;
+
+            rows.appendChild(row);
+
+        });
+
+        // RESTORE RECENT ALERTS
+        recentAlerts.querySelectorAll(".activity").forEach(
+            alert => alert.remove()
+        );
+
+        data.alerts.forEach(alert => {
+
+            const alertItem = document.createElement("div");
+
+            alertItem.className = "activity";
+
+            const alertName = document.createElement("span");
+
+            alertName.textContent = alert.name;
+
+            const alertSeverity = document.createElement("span");
+
+            alertSeverity.className =
+                "severity " + alert.severity.toLowerCase();
+
+            alertSeverity.textContent = alert.severity;
+
+            alertItem.append(
+                alertName,
+                alertSeverity
+            );
+
+            recentAlerts.appendChild(alertItem);
+
+        });
+
+        // RESTORE CHART
+        const maxCount = Math.max(...weeklyCounts);
+
+        chartBars.forEach((bar, index) => {
+
+            bar.style.height =
+                (weeklyCounts[index] / maxCount) * 100 + "%";
+
+        });
+
+        applyFilter();
+
+    } catch (error) {
+
+        console.error("Dashboard data could not be loaded.");
+
+    }
+
+}
+
 
 const chartBars = document.querySelectorAll(".chart .bar");
 
@@ -972,6 +1130,8 @@ try {
     // UPDATE MESSAGE
     document.querySelector("#eventMessage").textContent =
         "Demo event generated: " + event.name;
+    // SAVE UPDATED DASHBOARD
+saveDashboardData();
 
 });
 // EXPORT SECURITY LOGS AS CSV
@@ -1056,6 +1216,8 @@ clearBtn.addEventListener("click", () => {
         // UPDATE MESSAGE
         document.querySelector("#eventMessage").textContent =
             "All demo security logs have been cleared.";
+        // SAVE CLEARED DATA
+saveDashboardData();
 
         // APPLY FILTER
         applyFilter();
@@ -1066,4 +1228,8 @@ clearBtn.addEventListener("click", () => {
 
 
 </body>
+    // LOAD SAVED DASHBOARD DATA
+loadDashboardData();
+
+</script>
 </html>
