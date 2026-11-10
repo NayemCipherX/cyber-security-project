@@ -553,6 +553,41 @@ footer {
 
     </section>
 
+    
+    <!-- AI DETECTION STATUS -->
+    <section class="section panel" id="ai-status">
+
+        <h3 class="section-title">
+            AI Detection Status
+        </h3>
+
+        <div class="activity">
+            <span>Detection Engine</span>
+            <span class="severity low">
+                ACTIVE
+            </span>
+        </div>
+
+        <div class="activity">
+            <span>Machine Learning Model</span>
+            <span>Isolation Forest (Demo)</span>
+        </div>
+
+        <div class="activity">
+            <span>Threat Detection</span>
+            <span class="severity medium">
+                SIMULATED
+            </span>
+        </div>
+
+        <div class="activity">
+            <span>Last Scan</span>
+            <span id="lastScan">Waiting...</span>
+        </div>
+
+    </section>
+
+
 
     <!-- SECURITY LOGS -->
     <section class="section panel" id="logs">
@@ -686,6 +721,9 @@ const simulateBtn = document.querySelector("#simulateBtn");
     const exportBtn = document.querySelector("#exportBtn");
     const clearBtn = document.querySelector("#clearBtn");
 const recentAlerts = document.querySelector("#alerts");
+    // AI DETECTION LAST SCAN
+document.querySelector("#lastScan").textContent =
+    new Date().toLocaleString();
 
 let totalEvents = 1284;
 let threats = 24;
@@ -1227,9 +1265,10 @@ saveDashboardData();
 });
 
 
-</body>
+
     // LOAD SAVED DASHBOARD DATA
 loadDashboardData();
 
 </script>
+    </body>
 </html>
