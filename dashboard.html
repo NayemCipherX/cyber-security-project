@@ -344,8 +344,19 @@ footer {
 
     .topbar h1 {
         font-size: 22px;
-        #aiDetectionMessage {
-    margin-top: 12px;
+    }
+}
+
+.ai-detection-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    max-width: 75%;
+}
+
+#aiDetectionMessage {
+    margin-top: 0;
     padding: 12px;
     background: rgba(34, 197, 94, 0.08);
     border-left: 3px solid #22c55e;
@@ -353,8 +364,6 @@ footer {
     color: #a7f3d0;
     font-size: 13px;
     line-height: 1.6;
-}
-    }
 }
     
 /* SECURITY LOG SEARCH */
@@ -573,12 +582,12 @@ footer {
 
         <div class="activity">
             <span>Detection Engine</span>
-            <span class="severity low">
-                ACTIVE
+            <div class="ai-detection-status">
+                <span class="severity low">ACTIVE</span>
                 <p id="aiDetectionMessage">
-    AI Detection Engine is waiting for security events.
-</p>
-            </span>
+                    AI Detection Engine is waiting for security events.
+                </p>
+            </div>
         </div>
 
         <div class="activity">
@@ -1178,6 +1187,25 @@ try {
 
 }
 
+    // UPDATE AI DETECTION USING THE SAME EVENT SHOWN IN THE LOG
+    const aiDetectionMessage = document.querySelector("#aiDetectionMessage");
+    const lastScan = document.querySelector("#lastScan");
+    const severityColors = {
+        Critical: "#ef4444",
+        High: "#f97316",
+        Medium: "#f59e0b",
+        Low: "#22c55e"
+    };
+
+    aiDetectionMessage.textContent =
+        "AI Detection: " + event.name +
+        " detected | Threat Level: " + event.severity.toUpperCase();
+
+    const detectionColor = severityColors[event.severity] || "#48caff";
+    aiDetectionMessage.style.color = detectionColor;
+    aiDetectionMessage.style.borderLeftColor = detectionColor;
+    lastScan.textContent = new Date().toLocaleString();
+
     // UPDATE MESSAGE
     document.querySelector("#eventMessage").textContent =
         "Demo event generated: " + event.name;
@@ -1282,56 +1310,6 @@ saveDashboardData();
     // LOAD SAVED DASHBOARD DATA
 loadDashboardData();
 
-    // AI DETECTION - SIMULATED EVENT CONNECTION
-
-const aiDetectionMessage =
-    document.getElementById("aiDetectionMessage");
-
-const simulateEventButton =
-    document.getElementById("simulateBtn");
-
-if (aiDetectionMessage && simulateEventButton) {
-
-    simulateEventButton.addEventListener("click", function () {
-
-        const simulatedThreats = [
-            {
-                name: "Brute Force Attack",
-                level: "HIGH",
-                color: "#ef4444"
-            },
-            {
-                name: "Suspicious Login Attempt",
-                level: "MEDIUM",
-                color: "#f59e0b"
-            },
-            {
-                name: "Port Scanning Activity",
-                level: "MEDIUM",
-                color: "#f59e0b"
-            },
-            {
-                name: "SQL Injection Attempt",
-                level: "CRITICAL",
-                color: "#ef4444"
-            }
-        ];
-
-        const detectedThreat =
-            simulatedThreats[
-                Math.floor(Math.random() * simulatedThreats.length)
-            ];
-
-        aiDetectionMessage.textContent =
-            "AI Detection: " + detectedThreat.name +
-            " detected | Threat Level: " + detectedThreat.level;
-
-        aiDetectionMessage.style.color = detectedThreat.color;
-        aiDetectionMessage.style.borderLeftColor = detectedThreat.color;
-
-    });
-
-}
 
 </script>
     </body>
