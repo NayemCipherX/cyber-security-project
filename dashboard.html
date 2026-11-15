@@ -592,13 +592,13 @@ footer {
 
         <div class="activity">
             <span>Machine Learning Model</span>
-            <span>Isolation Forest (Demo)</span>
+           <span>Random Forest (Trained Model)</span>
         </div>
 
         <div class="activity">
             <span>Threat Detection</span>
             <span class="severity medium">
-                SIMULATED
+              DATASET-BASED DEMO
             </span>
         </div>
 
@@ -981,7 +981,7 @@ searchInput.addEventListener("input", () => {
 });
 
 // SIMULATE SECURITY EVENT
-simulateBtn.addEventListener("click", () => {
+simulateBtn.addEventListener("click", async () => {
 
     const events = [
 
@@ -1017,7 +1017,37 @@ simulateBtn.addEventListener("click", () => {
         Math.floor(Math.random() * events.length)
     ];
 
+// CONNECT TO CYBERSHIELD AI FLASK BACKEND
+let aiResult = null;
 
+try {
+
+    const response = await fetch(
+        "http://127.0.0.1:5000/simulate",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                event_name: event.name
+            })
+        }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+        throw new Error(result.error || "AI prediction failed");
+    }
+
+    aiResult = result;
+
+} catch (error) {
+
+    console.error("AI Backend Error:", error);
+
+}
     // UPDATE COUNTERS
 totalEvents++;
 threats++;
@@ -1187,24 +1217,43 @@ try {
 
 }
 
-    // UPDATE AI DETECTION USING THE SAME EVENT SHOWN IN THE LOG
-    const aiDetectionMessage = document.querySelector("#aiDetectionMessage");
-    const lastScan = document.querySelector("#lastScan");
-    const severityColors = {
-        Critical: "#ef4444",
-        High: "#f97316",
-        Medium: "#f59e0b",
-        Low: "#22c55e"
-    };
+    // DISPLAY REAL RANDOM FOREST MODEL PREDICTION
+
+const aiDetectionMessage =
+    document.querySelector("#aiDetectionMessage");
+
+const lastScan =
+    document.querySelector("#lastScan");
+
+if (aiResult) {
+
+    const prediction = aiResult.prediction;
 
     aiDetectionMessage.textContent =
-        "AI Detection: " + event.name +
-        " detected | Threat Level: " + event.severity.toUpperCase();
+        "Random Forest Prediction: " + prediction +
+        " | " +
+        (aiResult.is_attack
+            ? "Potential attack detected"
+            : "Benign traffic detected");
 
-    const detectionColor = severityColors[event.severity] || "#48caff";
+    const detectionColor = aiResult.is_attack
+        ? "#ef4444"
+        : "#22c55e";
+
     aiDetectionMessage.style.color = detectionColor;
     aiDetectionMessage.style.borderLeftColor = detectionColor;
-    lastScan.textContent = new Date().toLocaleString();
+
+} else {
+
+    aiDetectionMessage.textContent =
+        "AI Backend unavailable. Event recorded, but no model prediction was received.";
+
+    aiDetectionMessage.style.color = "#f59e0b";
+    aiDetectionMessage.style.borderLeftColor = "#f59e0b";
+
+}
+
+lastScan.textContent = new Date().toLocaleString();
 
     // UPDATE MESSAGE
     document.querySelector("#eventMessage").textContent =
